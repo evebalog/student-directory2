@@ -38,15 +38,29 @@ end
 
 def print(students)
   students.each.with_index(1) do |student, index|
+      if
     puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
+def print_only_m(students)
+ with_m = students.select{|student| student[:name][0].downcase.match('m')}
+    if with_m.count == 0
+      puts "There is no student whose name starts with letter M"
+    else
+      puts "Students starting with the letter M: #{with_m}"
+    end
+  end
+end
+
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
+
 #nothing happens until we call the methods
 students = input_students
 print_header
 print(students)
 print_footer(students)
+print_only_m(students)
