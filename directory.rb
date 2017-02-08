@@ -48,11 +48,25 @@ def print_only_m(students)
     if with_m.count == 0
       puts "There is no student whose name starts with letter M"
     else
-      puts "Students starting with the letter M: #{with_m}"
+      puts "Student names starting with the letter M:"
+      with_m.each do |student|
+        puts "#{student[:name]}"
+      end
     end
   end
 end
 
+def print_short_names(students)
+short = students.select {|student| student[:name].length < 12}
+    if short == 0
+      puts "There are no students with name shorter than 12 characters"
+    else
+      puts "Students with name shorter than 12 characters:"
+      short.each.with_index(1) do |student, index|
+        puts "#{index}. #{student[:name]}"
+    end
+  end
+end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
@@ -64,3 +78,4 @@ print_header
 print(students)
 print_footer(students)
 print_only_m(students)
+print_short_names(students)
